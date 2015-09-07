@@ -42,11 +42,7 @@ public class EditNoteActivity extends ActionBarActivity
             Note note = (Note)extra;
             titleEditText.setText(note.getTitle());
             noteEditText.setText(note.getNote());
-            
-            DateFormat dataFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-            String date = dataFormat.format(note.getDate());
-            
-            dateTextView.setText(date);
+            dateTextView.setText(note.getDate());
             
             isInEditMode = false;
             titleEditText.setEnabled(false);
@@ -64,11 +60,14 @@ public class EditNoteActivity extends ActionBarActivity
                 {
                     if (isInEditMode)
                     {
+                        DateFormat dataFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
+                        String date = dataFormat.format(Calendar.getInstance().getTime());
+                        
                         Intent returnIntent = new Intent();
                         Note note = new Note(
                                 titleEditText.getText().toString(),
                                 noteEditText.getText().toString(),
-                                Calendar.getInstance().getTime());
+                                date);
                         returnIntent.putExtra("Note", note);
                         setResult(RESULT_OK, returnIntent);
                         finish();

@@ -2,10 +2,11 @@ package com.example.notetaker;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.ContextMenu;
@@ -25,6 +26,7 @@ public class ListNotesActivity extends ActionBarActivity
     private List<Note> notes = new ArrayList<Note>();
     private ListView notesListView;
     private int editingNoteId = -1;
+    private SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) 
@@ -51,12 +53,9 @@ public class ListNotesActivity extends ActionBarActivity
         
         registerForContextMenu(notesListView);
         
-        notes.add(new Note("First note", "Wei Ren", new Date()));
-        notes.add(new Note("Second note", "Wei Ren", new Date()));
-        notes.add(new Note("Third note", "Wei Ren", new Date()));
-        notes.add(new Note("Fourth note", "Wei Ren", new Date()));
-        notes.add(new Note("Fifth note", "Wei Ren", new Date()));
+        sharedPref = getPreferences(Context.MODE_PRIVATE);
         
+        loadList();
         populateList();
     }
     
@@ -141,6 +140,69 @@ public class ListNotesActivity extends ActionBarActivity
         return true;
     }
 
+    @Override
+    protected void onStop()
+    {
+        saveList();
+        
+        super.onStop();
+    }
+
+    private void loadList()
+    {
+        int cntNotes = sharedPref.getInt(getString(R.string.cntnotes), 0);
+        for (int i = 0; i < cntNotes; i++)
+        {
+            // Load note title.
+            String noteTitle = sharedPref.getString(getString(R.string.noteTitle) + i, null);
+            if (noteTitle == null)
+            {
+                noteTitle = getString(R.string.notAvailable);
+            }
+            
+            // Load note date.
+            String noteDate = sharedPref.getString(getString(R.string.noteDate) + i, null);
+            if (noteDate == null)
+            {
+                noteDate = "00-00-0000 00:00:00";
+            }
+            
+            // Load note content.
+            String noteContent = sharedPref.getString(getString(R.string.noteContent) + i, null);
+            if (noteContent == null)
+            {
+                noteContent = getString(R.string.notAvailable);
+            }
+            
+            notes.add(new Note(noteTitle, noteDate, noteContent));
+        }
+    }
+    
+    private void saveList()
+    {
+        SharedPreferences.Editor editor = sharedPref.edit();
+        int cntNotes = notes.size();
+        
+        editor.putInt(getString(R.string.cntnotes), cntNotes);
+        
+        int i = 0;
+        for (Note note : notes)
+        {
+            // Save note title.
+            editor.putString(getString(R.string.noteTitle) + i, note.getTitle());
+            
+            // Save note date.
+            editor.putString(getString(R.string.noteDate) + i, note.getDate());
+            
+            // Save note content.
+            editor.putString(getString(R.string.noteContent) + i, note.getNote());
+            
+            i++;
+        }
+        
+        editor.commit();
+    }
+    
     private void populateList()
     {
         List<String> values = new ArrayList<String>();

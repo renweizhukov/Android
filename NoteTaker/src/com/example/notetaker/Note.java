@@ -1,15 +1,14 @@
 package com.example.notetaker;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class Note implements Serializable
 {
     private String title;
     private String note;
-    private Date date;
+    private String date;
     
-    public Note(String title, String note, Date date)
+    public Note(String title, String note, String date)
     {
         super();
         this.title = title;
@@ -35,11 +34,11 @@ public class Note implements Serializable
         this.note = note;
     }
     
-    public Date getDate()
+    public String getDate()
     {
         return date;
     }
-    public void setDate(Date date)
+    public void setDate(String date)
     {
         this.date = date;
     }

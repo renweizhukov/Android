@@ -356,6 +356,7 @@ int string action_settings 0x7f0a000f
 int string add_note 0x7f0a0015
 int string app_name 0x7f0a000d
 int string cancel 0x7f0a0016
+int string cntnotes 0x7f0a001e
 int string date 0x7f0a0011
 int string delete 0x7f0a0017
 int string deleteAlertDialogCancelButton 0x7f0a001b
@@ -363,7 +364,11 @@ int string deleteAlertDialogDeleteButton 0x7f0a001a
 int string deleteAlertDialogMessage 0x7f0a0018
 int string deleteAlertDialogTitle 0x7f0a0019
 int string hello_world 0x7f0a000e
+int string notAvailable 0x7f0a0020
 int string note 0x7f0a0012
+int string noteContent 0x7f0a0022
+int string noteDate 0x7f0a0021
+int string noteTitle 0x7f0a001f
 int string save 0x7f0a0013
 int string saveButtonEdit 0x7f0a001c
 int string saveButtonSave 0x7f0a001d

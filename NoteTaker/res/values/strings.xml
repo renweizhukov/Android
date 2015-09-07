@@ -18,5 +18,10 @@
     <string name="deleteAlertDialogCancelButton">Cancel</string>
     <string name="saveButtonEdit">Edit</string>
     <string name="saveButtonSave">Save</string>
+    <string name="cntnotes">cntNotes</string>
+    <string name="noteTitle">Title</string>
+    <string name="notAvailable">N/A</string>
+    <string name="noteDate">Date</string>
+    <string name="noteContent">Content</string>
 
 </resources>

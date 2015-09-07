@@ -1258,6 +1258,7 @@ containing a value of this type.
         public static final int add_note=0x7f0a0015;
         public static final int app_name=0x7f0a000d;
         public static final int cancel=0x7f0a0016;
+        public static final int cntnotes=0x7f0a001e;
         public static final int date=0x7f0a0011;
         public static final int delete=0x7f0a0017;
         public static final int deleteAlertDialogCancelButton=0x7f0a001b;
@@ -1265,7 +1266,11 @@ containing a value of this type.
         public static final int deleteAlertDialogMessage=0x7f0a0018;
         public static final int deleteAlertDialogTitle=0x7f0a0019;
         public static final int hello_world=0x7f0a000e;
+        public static final int notAvailable=0x7f0a0020;
         public static final int note=0x7f0a0012;
+        public static final int noteContent=0x7f0a0022;
+        public static final int noteDate=0x7f0a0021;
+        public static final int noteTitle=0x7f0a001f;
         public static final int save=0x7f0a0013;
         public static final int saveButtonEdit=0x7f0a001c;
         public static final int saveButtonSave=0x7f0a001d;
